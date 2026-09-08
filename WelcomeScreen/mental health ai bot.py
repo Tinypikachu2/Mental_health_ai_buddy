@@ -55,11 +55,20 @@ HTML_PAGE = """
   What do you want to talk about?: <input name="topic" value="{{topic}}" required><br>
   How does it make you feel?: <input name="feeling" value="{{feeling}}" required><br>
   <input type="submit" value="Submit">
+  
+  <label for="bgColorPicker">Pick a background color:</label>
+<input type="color" id="bgColorPicker" value="#ff69b4">
 </form>
 {% if response %}
   <h2>Bot:</h2>
   <p>{{response}}</p>
 {% endif %}
+<script>
+  const bgPicker = document.querySelector('#bgColorPicker');
+  bgPicker.addEventListener('input', function (event) {
+    document.body.style.backgroundColor = event.target.value;
+  });
+</script>
 """
 
 @app.route("/", methods=["GET", "POST"])
