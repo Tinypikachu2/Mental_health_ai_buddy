@@ -24,7 +24,7 @@ def swap_pronouns(topic):
     return topic
 
 
-def respond_to_feeling(name, bot_topic, feeling):
+def respond_to_feeling(name, feeling):
     if any(x in feeling for x in ["happy", "awesome", "good", "great"]):
         return f"Really, that's awesome {name}, I hope that happy feeling continues!"
     elif any(x in feeling for x in ["sad", "upset"]):
@@ -87,10 +87,9 @@ def home():
         name = request.form["name"]
         topic = request.form["topic"]
         feeling = request.form["feeling"].lower().strip()
-        bot_topic = swap_pronouns(topic)
-        response = respond_to_feeling(name, bot_topic, feeling)
+        response = respond_to_feeling(name, feeling)
     return render_template_string(HTML_PAGE, response=response, name=name, topic=topic, feeling=feeling)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=50010)

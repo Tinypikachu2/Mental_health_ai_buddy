@@ -1,0 +1,24 @@
+HTML_PAGE = """
+<!doctype html>
+<html>
+<head>
+  <title>MiniSocial</title>
+  <style>
+
+<input id="postBox" type="text" placeholder="What's on your mind?" />
+<button onclick="addPost()">Post</button>
+<ul id="feed"></ul>
+
+<script>
+function addPost() {
+  const post = document.getElementById('postBox').value;
+  if (post) {
+    const li = document.createElement('li');
+    li.textContent = post;
+    document.getElementById('feed').appendChild(li);
+    document.getElementById('postBox').value = '';
+  }
+}
+</script>
+if __name__ == "__main__":
+    app.run(debug=True, port=5015)
