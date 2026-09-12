@@ -93,7 +93,7 @@ def home():
     if request.method == "POST":
         name = request.form["name"]
         topic = request.form["topic"]
-        feeling = request.form["feeling"]
+        feeling = request.form["feeling"].lower().strip()
         bg_color = request.form.get("color", "#ffffff")
 
         bot_topic = swap_pronouns(topic)
