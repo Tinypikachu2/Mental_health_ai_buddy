@@ -3,27 +3,6 @@ import re
 
 app = Flask(__name__)
 
-
-def swap_pronouns(topic):
-    rules = [
-        (r"\bours\b", "yours"),
-        (r"\bOurs\b", "Yours"),
-        (r"\bmine\b", "yours"),
-        (r"\bMine\b", "Yours"),
-        (r"\bour\b", "your"),
-        (r"\bOur\b", "Your"),
-        (r"\bmy\b", "your"),
-        (r"\bMy\b", "Your"),
-        (r"\bI\b", "you"),
-        (r"\bme\b", "you"),
-        (r"\bwe\b", "you"),
-        (r"\bWe\b", "You"),
-    ]
-    for pattern, replacement in rules:
-        topic = re.sub(pattern, replacement, topic)
-    return topic
-
-
 def respond_to_feeling(name, feeling):
     if any(x in feeling for x in ["happy", "awesome", "good", "great"]):
         return f"Really, that's awesome {name}, I hope that happy feeling continues!"
