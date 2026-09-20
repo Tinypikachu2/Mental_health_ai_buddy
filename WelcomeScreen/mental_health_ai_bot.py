@@ -1,5 +1,4 @@
 from flask import Flask, render_template_string, request
-import re
 
 app = Flask(__name__)
 
@@ -24,7 +23,7 @@ HTML_PAGE = """
 <!doctype html>
 <title>Tasha's AI Mental Health Bot</title>
 <h1>Tasha's AI Mental Health Bot 🤖</h1>
-<h1>⚠️DISCAIMER⚠️THIS IS FOR ENTERTAINMENT PURPOSES ONLY!</h1>
+<h1>⚠️DISCLAIMER⚠️THIS IS FOR ENTERTAINMENT PURPOSES ONLY!</h1>
 <h2>DO NOT give any personal or medical info!</h2>
 <h2>By using this you understand that this is for entertainment purposes only and have no legal authority</h2>
 <h2>if you wish to "talk again" just erase your answers and put new answers in!</h2>
