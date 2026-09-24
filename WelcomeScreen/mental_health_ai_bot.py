@@ -1,10 +1,7 @@
 from flask import Flask, render_template_string, request
-import re
 
 app = Flask(__name__)
 
-
-def respond_to_feeling(name, bot_topic, feeling):
     if any(x in feeling for x in ["happy", "awesome", "good", "great"]):
         return f"Really, that's awesome {name}, I hope that happy feeling continues!"
     elif any(x in feeling for x in ["sad", "upset"]):
@@ -25,8 +22,6 @@ HTML_PAGE = """
 <!doctype html>
 <title>Tasha's AI Mental Health Bot</title>
 <h1>Tasha's AI Mental Health Bot 🤖</h1>
-<h1>⚠️DISCLAIMER: FOR ENTERTAIMENT PUROPSES ONLY⚠️</h1>
-<h2>Please DO NOT give any personal info other than first name (if you wish)!</h2>
 <!doctype html>
 <title>Tasha's AI Mental Health Bot</title>
 <style>
@@ -58,10 +53,7 @@ def home():
         name = request.form["name"]
         topic = request.form["topic"]
         feeling = request.form["feeling"].lower().strip()
-        bot_topic = swap_pronouns(topic)
-        response = respond_to_feeling(name, bot_topic, feeling)
     return render_template_string(HTML_PAGE, response=response, name=name, topic=topic, feeling=feeling)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=50010)
