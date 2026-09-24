@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Natasha Teehan | Portfolio</title>
+</head>
+<body>
+
+    <h1>Hello, my name is Natasha "Tasha" Teehan!</h1>
+    <h2>Upcoming Software Engineer & Content Creator</h2>
+    <p>
+      I'm a computer science student building full-stack web applications and sharing my coding journey.
+      As a content creator, I love showing the behind-the-scenes process—taking projects from
+      "under the hood" code to the finished, working product!
+    </p>
+
+    <div class="project-card">
+      <h3>Mental Health AI Bot</h3>
+      <p><strong>Under the Hood:</strong> Built with Python & Flask to process requests and manage backend logic.</p>
+      <p><strong>The Finished Car:</strong> A fully interactive, live chat web application.</p>
+      <a href="https://mental-health-ai-buddy-3-viko.onrender.com/" target="_blank" rel="noopener noreferrer">View Live Site</a>
+    </div>
+
+    <hr>
+
+    <h2>Job Description Matcher</h2>
+    <p>Paste a job description below to see how well my skills align with the position!</p>
+
+    <form action="/matcher" method="post">
+      <textarea name="job_description" rows="8" cols="50" placeholder="Paste job description here..." required></textarea><br><br>
+      <button type="submit">Analyze Match</button>
+    </form>
+
+    {% if results %}
+      <hr>
+      <h3>Match Score: {{ results.score }}%</h3>
+
+      <h4>Matched Skills Found:</h4>
+      <ul>
+        {% for skill in results.matched %}
+          <li>✅ {{ skill|title }}</li>
+        {% else %}
+          <li>No matching skills detected.</li>
+        {% endfor %}
+      </ul>
+
+      <h4>Skills Still Learning / Not Mentioned:</h4>
+      <ul>
+        {% for skill in results.missing %}
+          <li>⏳ {{ skill|title }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+</body>
+</html>
