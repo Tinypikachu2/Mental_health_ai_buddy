@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Bot Christian Edition!</title>
+    <style>
+        body {
+            background-color: #ff69b4;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .disclaimer {
+            color: #8b0000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="disclaimer">⚠️ DISCLAIMER ⚠️ THIS IS FOR ENTERTAINMENT PURPOSES ONLY!</h1>
+    <h2>Mental Health Bot Christian Edition!</h2>
+    <p>
+      DO NOT give any personal or medical info! By using this, you understand that this is for entertainment purposes only and has no legal authority!
+      If you wish to "talk again", just erase your answers and put new answers in!
+    </p>
+
+    <div class="project-card">
+      <h3>Mental Health AI Bot</h3>
+      <p><strong>The Original Site:</strong> A fully interactive, live chat web application.</p>
+      <a href="https://mental-health-ai-buddy-3-viko.onrender.com/" target="_blank" rel="noopener noreferrer">View Live Site</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Come follow me:</h3>
+      <p>My TikTok: <a href="https://www.tiktok.com/@xxtiny.pikachuxx" target="_blank" rel="noopener noreferrer">View Live Site</a></p>
+      <p>My Facebook: <a href="https://www.facebook.com/share/19ScxeMXEs/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">View Live Site</a></p>
+      <p>My GitHub: <a href="https://github.com/Tinypikachu2" target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+      <p>Sponsored by Dubby, affiliate link here: <a href="https://www.dubby.gg/collections/tubs-more" target="_blank" rel="noopener noreferrer">Natsha's link to Dubby</a></p>
+    </div>
+
+    <hr>
+
+    <form method="POST">
+        <label>
+            Your name:
+            <input type="text" name="name" value="{{ name }}" required>
+        </label>
+        <br><br>
+
+        <label>
+            What do you want to talk about?:
+            <input type="text" name="topic" value="{{ topic }}" required>
+        </label>
+        <br><br>
+
+        <label>
+            How does it make you feel?:
+            <input type="text" name="feeling" value="{{ feeling }}" required>
+        </label>
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if response %}
+      <div class="project-card" style="margin-top: 20px;">
+        <h2>Bot:</h2>
+        <p>{{ response }}</p>
+      </div>
+    {% endif %}
+
+</body>
+</html>
+
