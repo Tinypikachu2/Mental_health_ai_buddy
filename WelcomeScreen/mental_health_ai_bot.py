@@ -17,43 +17,8 @@ app = Flask(__name__)
     else:
         return "Thank you for sharing how you feel. I'm here for you no matter what."
 
+if __name__ != "__main__":
+    pass
+else:
+    app.run(debug=True, port=50010)
 
-HTML_PAGE = """
-<!doctype html>
-<title>Tasha's AI Mental Health Bot</title>
-<h1>Tasha's AI Mental Health Bot 🤖</h1>
-<!doctype html>
-<title>Tasha's AI Mental Health Bot</title>
-<style>
-  body {
-    background-color: #ff69b4;
-  }
-</style>
-
-<form method=post>
-  Your name: <input name="name" value="{{name}}" required><br>
-  What do you want to talk about?: <input name="topic" value="{{topic}}" required><br>
-  How does it make you feel?: <input name="feeling" value="{{feeling}}" required><br>
-  <input type="submit" value="Submit">
-</form>
-{% if response %}
-  <h2>Bot:</h2>
-  <p>{{response}}</p>
-{% endif %}
-"""
-
-
-@app.route("/", methods=["GET", "POST"])
-def home():
-    response = ""
-    name = ""
-    topic = ""
-    feeling = ""
-    if request.method == "POST":
-        name = request.form["name"]
-        topic = request.form["topic"]
-        feeling = request.form["feeling"].lower().strip()
-    return render_template_string(HTML_PAGE, response=response, name=name, topic=topic, feeling=feeling)
-
-
-if __name__ == "__main__":
