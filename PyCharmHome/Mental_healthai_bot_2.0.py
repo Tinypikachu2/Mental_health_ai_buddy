@@ -16,17 +16,29 @@ elif any(x in feeling for x in ["hurt", "pain"]):
 else:
     return "Thank you for sharing how you feel. I'm here for you no matter what."
 
+
 @app.route("/", methods=["GET", "POST"])
+@app.route("/christian_mental", methods=["GET", "POST"])
 def home():
     response = ""
     name = ""
     topic = ""
     feeling = ""
+
     if request.method == "POST":
-        name = request.form["name"]
-        topic = request.form["topic"]
-        feeling = request.form["feeling"].lower().strip()
-    return render_template_string(HTML_PAGE, response=response, name=name, topic=topic, feeling=feeling)
+        name = request.form.get("name", "")
+        topic = request.form.get("topic", "")
+        feeling = request.form.get("feeling", "").lower().strip()
+
+        response = respond_to_feeling(name, feeling)
+
+    return render_template(
+        "christan_mental.html",
+        response=response,
+        name=name,
+        topic=topic,
+        feeling=feeling
+    )
 
 
 if __name__ == "__main__":
